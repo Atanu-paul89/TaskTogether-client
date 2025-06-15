@@ -32,7 +32,6 @@ const AuthProvider = ({ children }) => {
                 console.error("Error reloading user in AuthProvider:", error);
             }
         }
-    };
 
 
     const getAndStoreBackendToken = async (currentUser) => {
@@ -174,5 +173,5 @@ const AuthProvider = ({ children }) => {
         </AuthContext.Provider>
     );
 };
-
+}
 export default AuthProvider;
