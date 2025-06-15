@@ -1,16 +1,15 @@
-// src/Pages/TakeAssignment.jsx
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
 import axios from 'axios';
-import { AuthContext } from '../FireBase/AuthContext'; // Import AuthContext to get user email/name
+import { AuthContext } from '../FireBase/AuthContext'; 
 
 const TakeAssignment = () => {
-    const { id } = useParams(); // Get assignment ID from URL
+    const { id } = useParams(); 
     const navigate = useNavigate();
-    const { user, loading: authLoading } = useContext(AuthContext); // Get authenticated user info
+    const { user, loading: authLoading } = useContext(AuthContext); 
 
     const [assignment, setAssignment] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -19,9 +18,10 @@ const TakeAssignment = () => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const backendUrl = "http://localhost:5000"; // Your backend URL
+    // const backendUrl = "http://localhost:5000";
 
-    // Effect to fetch assignment details
+    const backendUrl = "https://a11-task-together-server.vercel.app"; 
+
     useEffect(() => {
         const fetchAssignmentDetails = async () => {
             try {
@@ -43,7 +43,6 @@ const TakeAssignment = () => {
         }
     }, [id]);
 
-    // Handle form submission
     const onSubmit = async (data) => {
         if (!user) {
             toast.error("You must be logged in to submit an assignment.");
@@ -54,19 +53,19 @@ const TakeAssignment = () => {
         try {
             const submissionData = {
                 assignmentId: id,
-                assignmentTitle: assignment.title, // Pass title from fetched assignment
-                originalMarks: assignment.marks,   // Pass original marks from fetched assignment
+                assignmentTitle: assignment.title, 
+                originalMarks: assignment.marks,  
                 submitterEmail: user.email,
-                submitterName: user.displayName || user.email, // Use display name or email
+                submitterName: user.displayName || user.email, 
                 submissionLink: data.submissionLink,
                 quickNote: data.quickNote,
-                status: 'pending', // Set initial status
+                status: 'pending', 
             };
 
             const response = await axios.post(`${backendUrl}/submitted-assignments`, submissionData);
             toast.success(response.data.message);
-            reset(); // Clear form fields
-            navigate('/mysubmission'); // Redirect to "My Work" page after submission
+            reset(); 
+            navigate('/mysubmission'); 
 
         } catch (err) {
             console.error("Error submitting assignment:", err);
