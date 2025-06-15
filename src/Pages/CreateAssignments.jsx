@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
 
 const CreateAssignments = () => {
-    const { user } = useContext(AuthContext); // Get logged-in user from AuthContext
+    const { user } = useContext(AuthContext); 
     const navigate = useNavigate();
 
     const [loading, setLoading] = useState(false);
@@ -19,16 +19,16 @@ const CreateAssignments = () => {
         const form = e.target;
         const title = form.title.value;
         const description = form.description.value;
-        const marks = parseInt(form.marks.value); // Convert marks to integer
+        const marks = parseInt(form.marks.value); 
         const thumbnail = form.thumbnail.value;
         const difficulty = form.difficulty.value;
-        const dueDate = form.dueDate.value; // Store as string for simplicity, or convert to Date object if needed
+        const dueDate = form.dueDate.value; 
 
-        // Get creator info from AuthContext
+
         const creatorEmail = user?.email;
-        const creatorName = user?.displayName || 'Anonymous'; // Fallback to 'Anonymous'
+        const creatorName = user?.displayName || 'Anonymous'; 
 
-        // Client-side Validation
+ 
         if (!title || !description || !marks || !thumbnail || !difficulty || !dueDate) {
             setFormError('All fields are required.');
             setLoading(false);
@@ -40,7 +40,7 @@ const CreateAssignments = () => {
             return;
         }
         try {
-            new URL(thumbnail); // Basic URL validation
+            new URL(thumbnail); 
         } 
         catch (_) {
             setFormError('Invalid thumbnail URL.');
@@ -52,10 +52,10 @@ const CreateAssignments = () => {
             setLoading(false);
             return;
         }
-        // You might want more robust date validation (e.g., not in the past)
+
         const selectedDate = new Date(dueDate);
         const today = new Date();
-        today.setHours(0, 0, 0, 0); // Normalize today to start of day
+        today.setHours(0, 0, 0, 0); 
         if (selectedDate < today) {
             setFormError('Due date cannot be in the past.');
             setLoading(false);
@@ -71,18 +71,23 @@ const CreateAssignments = () => {
             dueDate,
             creatorEmail,
             creatorName,
-            // You might want to add createdAt timestamp too
             createdAt: new Date().toISOString()
         };
 
         try {
-            // ⭐ MODIFICATION HERE: Corrected backend URL ⭐
-            const response = await fetch('http://localhost:5000/assignments', { 
+
+            // const response = await fetch('http://localhost:5000/assignments', { 
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+
+            //     },
+            //     body: JSON.stringify(newAssignment),
+            // });
+            const response = await fetch('https://a11-task-together-server.vercel.app/assignments', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Include Authorization header if your backend requires it
-                    // 'Authorization': `Bearer ${user?.accessToken}` // Example if using Firebase ID token
                 },
                 body: JSON.stringify(newAssignment),
             });
@@ -93,7 +98,6 @@ const CreateAssignments = () => {
                     const errorData = await response.json();
                     errorMsg = errorData.message || errorMsg;
                 } catch (jsonError) {
-                    // If response is not JSON (e.g., HTML 404 page), this catch will run
                     errorMsg = `Failed to parse error response. Server returned: ${response.statusText}. Likely a non-JSON response or truncated JSON.`;
                 }
                 throw new Error(errorMsg);
@@ -102,8 +106,8 @@ const CreateAssignments = () => {
             const data = await response.json();
             console.log('Assignment created successfully:', data);
             toast.success('Assignment created successfully!');
-            form.reset(); // Clear the form
-            navigate('/assignments'); // Redirect to the assignments page
+            form.reset(); 
+            navigate('/assignments'); 
         } catch (err) {
             console.error('Error creating assignment:', err);
             toast.error(`Failed to create assignment: ${err.message}`);

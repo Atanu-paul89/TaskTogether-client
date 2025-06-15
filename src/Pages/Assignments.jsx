@@ -176,43 +176,6 @@ const Assignments = () => {
         });
     };
 
-    // const handleDelete = (assignmentCreatorEmail, assignmentId) => {
-    //     if (!user || user.email !== assignmentCreatorEmail) {
-    //         Swal.fire({
-    //             title: 'Permission Denied',
-    //             text: user ? 'You can only delete assignments you created.' : 'You need to log in to delete an assignment.',
-    //             icon: 'error',
-    //             confirmButtonColor: '#3085d6',
-    //             confirmButtonText: 'OK'
-    //         }).then((result) => {
-    //             if (!user && result.isConfirmed) {
-    //                 navigate('/login');
-    //             }
-    //         });
-    //         return;
-    //     }
-    //     console.log(`User ${user.email} is attempting to delete assignment with ID: ${assignmentId}`);
-    //     toast.info("Delete functionality coming soon!");
-    // };
-
-    // const handleUpdate = (assignmentCreatorEmail, assignmentId) => {
-    //     if (!user || user.email !== assignmentCreatorEmail) {
-    //         Swal.fire({
-    //             title: 'Permission Denied',
-    //             text: user ? 'You can only update assignments you created.' : 'You need to log in to update an assignment.',
-    //             icon: 'error',
-    //             confirmButtonColor: '#3085d6',
-    //             confirmButtonText: 'OK'
-    //         }).then((result) => {
-    //             if (!user && result.isConfirmed) {
-    //                 navigate('/login');
-    //             }
-    //         });
-    //         return;
-    //     }
-    //     console.log(`User ${user.email} is attempting to update assignment with ID: ${assignmentId}`);
-    //     toast.info("Update functionality coming soon!");
-    // };
 
     const handleSearchClick = () => {
         setSearchTerm(tempSearchTerm);
