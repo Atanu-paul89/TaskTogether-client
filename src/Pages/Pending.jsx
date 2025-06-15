@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 
 const Pending = () => {
-    const { user } = useContext(AuthContext); // Get logged-in user info
+    const { user } = useContext(AuthContext); 
     const [pendingSubmissions, setPendingSubmissions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showModal, setShowModal] = useState(false);
-    const [selectedSubmission, setSelectedSubmission] = useState(null); // The submission being graded
+    const [selectedSubmission, setSelectedSubmission] = useState(null); 
     const [gradingLoading, setGradingLoading] = useState(false);
     const [gradingError, setGradingError] = useState('');
 
@@ -18,15 +18,18 @@ const Pending = () => {
         setError(null);
         if (!user?.email) {
             setLoading(false);
-            return; // No user logged in, cannot fetch private data
+            return; 
         }
 
         try {
-            const response = await fetch(`http://localhost:5000/submitted-assignments/pending-assignments?graderEmail=${user.email}`, {
+            // const response = await fetch(`http://localhost:5000/submitted-assignments/pending-assignments?graderEmail=${user.email}`, {
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     }
+            // });
+            const response = await fetch(`https://a11-task-together-server.vercel.app/submitted-assignments/pending-assignments?graderEmail=${user.email}`, {
                 headers: {
                     'Content-Type': 'application/json',
-                    // Include Authorization header if your backend requires it for private routes
-                    // 'Authorization': `Bearer ${user?.accessToken}`
                 }
             });
 
@@ -48,17 +51,17 @@ const Pending = () => {
 
     useEffect(() => {
         fetchPendingSubmissions();
-    }, [user?.email]); // Re-fetch when user email changes
+    }, [user?.email]); 
 
     const handleGiveMarkClick = (submission) => {
-        // Prevent grading own assignment (frontend check, backend must also validate)
+
         if (user && user.email === submission.submitterEmail) {
             toast.warn("You cannot grade your own submitted assignment.");
             return;
         }
         setSelectedSubmission(submission);
         setShowModal(true);
-        setGradingError(''); // Clear previous error
+        setGradingError(''); 
     };
 
     const handleModalClose = () => {
@@ -86,17 +89,23 @@ const Pending = () => {
             obtainedMarks,
             feedback,
             status: 'completed',
-            gradedBy: user?.email || 'Anonymous', // Record who graded it
+            gradedBy: user?.email || 'Anonymous', 
             gradedAt: new Date().toISOString()
         };
 
         try {
-            const response = await fetch(`http://localhost:5000/submitted-assignments/${selectedSubmission._id}/grade`, {
+            // const response = await fetch(`http://localhost:5000/submitted-assignments/${selectedSubmission._id}/grade`, {
+            //     method: 'PUT',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(gradeData),
+            // });
+
+            const response = await fetch(`https://a11-task-together-server.vercel.app/submitted-assignments/${selectedSubmission._id}/grade`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Include Authorization header if your backend requires it
-                    // 'Authorization': `Bearer ${user?.accessToken}`
                 },
                 body: JSON.stringify(gradeData),
             });
@@ -108,7 +117,7 @@ const Pending = () => {
 
             toast.success('Assignment marked successfully!');
             handleModalClose();
-            fetchPendingSubmissions(); // Re-fetch data to update the table
+            fetchPendingSubmissions(); 
         } catch (err) {
             console.error('Error grading assignment:', err);
             setGradingError(`Failed to submit grade: ${err.message}`);
@@ -159,10 +168,10 @@ const Pending = () => {
                 </div>
             ) : (
                 <>
-                    {/* Table for larger devices (sm and up) */}
-                    <div className="overflow-x-auto rounded-lg shadow-xl border border-base-300 dark:border-gray-700 hidden sm:block"> {/* ⭐ MODIFIED ⭐ */}
+                    {/* Table for larger devices  */}
+                    <div className="overflow-x-auto rounded-lg shadow-xl border border-base-300 dark:border-gray-700 hidden sm:block"> 
                         <table className="table w-full text-base-content">
-                            {/* head */}
+                        
                             <thead>
                                 <tr className="bg-base-200 text-lg">
                                     <th>Assignment Title</th>
@@ -187,7 +196,7 @@ const Pending = () => {
                                             <button
                                                 onClick={() => handleGiveMarkClick(submission)}
                                                 className="btn btn-primary btn-sm"
-                                                // Disable if current user is the submitter
+  
                                                 disabled={user && user.email === submission.submitterEmail}
                                             >
                                                 {user && user.email === submission.submitterEmail ? "Cannot Grade Own" : "Give Mark"}
@@ -199,8 +208,7 @@ const Pending = () => {
                         </table>
                     </div>
 
-                    {/* Card-like display for smaller devices (below sm) */}
-                    <div className="sm:hidden grid grid-cols-1 gap-4"> {/* ⭐ NEW BLOCK ⭐ */}
+                    <div className="sm:hidden grid grid-cols-1 gap-4"> 
                         {pendingSubmissions.map((submission) => (
                             <motion.div
                                 key={submission._id}
@@ -233,7 +241,7 @@ const Pending = () => {
                 </>
             )}
 
-            {/* Give Mark Modal (remains the same) */}
+            {/* Give Mark Modal */}
             {showModal && selectedSubmission && (
                 <dialog open className="modal modal-open">
                     <div className="modal-box w-11/12 max-w-2xl bg-base-100 shadow-xl p-6">
