@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-// ⭐ MODIFIED: Import Link from 'react-router-dom' ⭐
-import { useParams, useNavigate, Link } from 'react-router'; // Changed from 'react-router'
+import { useParams, useNavigate, Link } from 'react-router'; 
 import { motion } from 'framer-motion';
 import { AuthContext } from '../FireBase/AuthContext';
 import { toast } from 'react-toastify';
@@ -20,7 +19,8 @@ const AssignmentDetails = () => {
             setLoading(true);
             setError(null);
             try {
-                const response = await fetch(`http://localhost:5000/assignments/${id}`);
+                // const response = await fetch(`http://localhost:5000/assignments/${id}`);
+                const response = await fetch(`https://a11-task-together-server.vercel.app//assignments/${id}`);
 
                 if (!response.ok) {
                     let errorData = await response.json();
@@ -46,7 +46,7 @@ const AssignmentDetails = () => {
         }
     }, [id, navigate]);
     const handleDelete = () => {
-        // Permission check already done by isCreator variable
+        
         if (!user || user.email !== assignment.creatorEmail) {
             Swal.fire('Permission Denied', 'You can only delete assignments you created.', 'error');
             return;
@@ -63,12 +63,19 @@ const AssignmentDetails = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    // ⭐ NEW: Send DELETE request to backend ⭐
-                    const response = await fetch(`http://localhost:5000/assignments/${assignment._id}?creatorEmail=${user.email}`, {
+                   
+                    // const response = await fetch(`http://localhost:5000/assignments/${assignment._id}?creatorEmail=${user.email}`, {
+                    //     method: 'DELETE',
+                    //     headers: {
+                    //         'Content-Type': 'application/json',
+                          
+                    //     },
+                    // });
+                    const response = await fetch(`https://a11-task-together-server.vercel.app//assignments/${assignment._id}?creatorEmail=${user.email}`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',
-                            // 'Authorization': `Bearer ${token}` // If you implement JWT
+                          
                         },
                     });
 
@@ -78,7 +85,7 @@ const AssignmentDetails = () => {
                     }
 
                     toast.success('Assignment deleted successfully!');
-                    navigate('/assignments'); // Redirect to all assignments page after deletion
+                    navigate('/assignments'); 
                 } catch (err) {
                     console.error('Error deleting assignment:', err);
                     toast.error(`Failed to delete assignment: ${err.message}`);
@@ -92,9 +99,9 @@ const AssignmentDetails = () => {
         });
     };
 
-    // Handle "Take Assignment" click
+
     const handleTakeAssignment = () => {
-        if (!user) { // If user is not logged in
+        if (!user) { 
             Swal.fire({
                 title: 'You are not logged in!',
                 text: 'You need to log in to take this assignment.',
@@ -112,12 +119,10 @@ const AssignmentDetails = () => {
             return;
         }
 
-        // ⭐ MODIFIED: Navigate to the Take Assignment page ⭐
-        // This is where we link to the new /take-assignment/:id route.
         navigate(`/take-assignment/${assignment._id}`);
     };
 
-    // Combined loading check for both data fetching and authentication
+
     if (loading || authLoading) {
         return (
             <div className="flex justify-center items-center min-h-[calc(100vh-200px)]">
