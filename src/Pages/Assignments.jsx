@@ -1,7 +1,6 @@
  import React, { useEffect, useState, useContext } from 'react';
 import { motion } from 'framer-motion';
-// ⭐ MODIFIED: Import Link from 'react-router-dom' ⭐
-import { Link, useNavigate } from 'react-router'; // Changed from 'react-router'
+import { Link, useNavigate } from 'react-router'; 
 import { AuthContext } from '../FireBase/AuthContext';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
@@ -26,7 +25,8 @@ const Assignments = () => {
             setLoading(true);
             setError(null);
             try {
-                const response = await fetch('http://localhost:5000/assignments');
+                // const response = await fetch('http://localhost:5000/assignments');
+                const response = await fetch('https://a11-task-together-server.vercel.app/assignments');
 
                 if (!response.ok) {
                     let errorMsg = `HTTP error! status: ${response.status}`;
@@ -89,7 +89,7 @@ const Assignments = () => {
             });
             return;
         }
-        // ⭐ MODIFIED: Navigate to the Take Assignment page ⭐
+
         navigate(`/take-assignment/${assignmentId}`);
     };
 
@@ -108,7 +108,7 @@ const Assignments = () => {
             });
             return;
         }
-        // ⭐ MODIFIED: Navigate to the update assignment page ⭐
+
         navigate(`/update-assignment/${assignmentId}`);
     };
 
@@ -139,12 +139,19 @@ const Assignments = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    // ⭐ NEW: Send DELETE request to backend ⭐
-                    const response = await fetch(`http://localhost:5000/assignments/${assignmentId}?creatorEmail=${user.email}`, {
+
+                    // const response = await fetch(`http://localhost:5000/assignments/${assignmentId}?creatorEmail=${user.email}`, {
+                    //     method: 'DELETE',
+                    //     headers: {
+                    //         'Content-Type': 'application/json',
+                    //         // 'Authorization': `Bearer ${token}` // If you implement JWT
+                    //     },
+                    // });
+
+                    const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${assignmentId}?creatorEmail=${user.email}`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',
-                            // 'Authorization': `Bearer ${token}` // If you implement JWT
                         },
                     });
 
@@ -153,7 +160,7 @@ const Assignments = () => {
                         throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
                     }
 
-                    // Remove the deleted assignment from the state
+
                     setAssignments(prevAssignments => prevAssignments.filter(assign => assign._id !== assignmentId));
                     toast.success('Assignment deleted successfully!');
                 } catch (err) {
