@@ -48,7 +48,6 @@ const UpdateAssignment = () => {
             setLoading(true);
             setError(null);
             try {
-                // const response = await fetch(`http://localhost:5000/assignments/${id}`);
 
                 const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${id}`);
 
@@ -111,15 +110,8 @@ const UpdateAssignment = () => {
             creatorName: user.displayName || 'Unknown', 
         };
 
-        setLoading(true); // Set loading while submitting
+        setLoading(true); 
         try {
-            // const response = await fetch(`http://localhost:5000/assignments/${id}`, {
-            //     method: 'PUT', 
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(updatedAssignmentData),
-            // });
 
             const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${id}`, {
                 method: 'PUT', 

@@ -21,11 +21,7 @@ const MySubmission = () => {
         setLoading(true);
         setError(null);
         try {
-            // const response = await fetch(`http://localhost:5000/submitted-assignments/my-submitted-assignments?email=${email}`, {
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     }
-            // });
+
             const response = await fetch(`https://a11-task-together-server.vercel.app/submitted-assignments/my-submitted-assignments?email=${email}`, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -60,11 +56,7 @@ const MySubmission = () => {
         setLoading(true);
         setError(null);
         try {
-            // const response = await fetch(`http://localhost:5000/assignments/my-posted-assignments?email=${email}`, {
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     }
-            // });
+
             const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/my-posted-assignments?email=${email}`, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -130,12 +122,6 @@ const MySubmission = () => {
 
         if (confirmDelete.isConfirmed) {
             try {
-                // const response = await fetch(`http://localhost:5000/assignments/${assignmentId}?creatorEmail=${user.email}`, {
-                //     method: 'DELETE',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //     },
-                // });
 
                 const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${assignmentId}?creatorEmail=${user.email}`, {
                     method: 'DELETE',

@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
     const getAndStoreBackendToken = async (currentUser) => {
         if (currentUser) {
             try {
-                const res = await fetch('http://localhost:5000/auth/login', {
+                const res = await fetch('https://a11-task-together-server.vercel.app/auth/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

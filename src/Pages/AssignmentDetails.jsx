@@ -19,7 +19,7 @@ const AssignmentDetails = () => {
             setLoading(true);
             setError(null);
             try {
-                // const response = await fetch(`http://localhost:5000/assignments/${id}`);
+
                 const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${id}`);
 
                 if (!response.ok) {
@@ -64,13 +64,7 @@ const AssignmentDetails = () => {
             if (result.isConfirmed) {
                 try {
                    
-                    // const response = await fetch(`http://localhost:5000/assignments/${assignment._id}?creatorEmail=${user.email}`, {
-                    //     method: 'DELETE',
-                    //     headers: {
-                    //         'Content-Type': 'application/json',
-                          
-                    //     },
-                    // });
+
                     const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${assignment._id}?creatorEmail=${user.email}`, {
                         method: 'DELETE',
                         headers: {

@@ -18,8 +18,6 @@ const TakeAssignment = () => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    // const backendUrl = "http://localhost:5000";
-
     const backendUrl = "https://a11-task-together-server.vercel.app"; 
 
     useEffect(() => {

@@ -76,14 +76,6 @@ const CreateAssignments = () => {
 
         try {
 
-            // const response = await fetch('http://localhost:5000/assignments', { 
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-
-            //     },
-            //     body: JSON.stringify(newAssignment),
-            // });
             const response = await fetch('https://a11-task-together-server.vercel.app/assignments', { 
                 method: 'POST',
                 headers: {

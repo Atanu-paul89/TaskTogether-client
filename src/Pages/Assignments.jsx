@@ -25,7 +25,7 @@ const Assignments = () => {
             setLoading(true);
             setError(null);
             try {
-                // const response = await fetch('http://localhost:5000/assignments');
+
                 const response = await fetch('https://a11-task-together-server.vercel.app/assignments');
 
                 if (!response.ok) {
@@ -139,14 +139,6 @@ const Assignments = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-
-                    // const response = await fetch(`http://localhost:5000/assignments/${assignmentId}?creatorEmail=${user.email}`, {
-                    //     method: 'DELETE',
-                    //     headers: {
-                    //         'Content-Type': 'application/json',
-                    //         // 'Authorization': `Bearer ${token}` // If you implement JWT
-                    //     },
-                    // });
 
                     const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${assignmentId}?creatorEmail=${user.email}`, {
                         method: 'DELETE',
