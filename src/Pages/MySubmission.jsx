@@ -308,7 +308,7 @@ const MySubmission = () => {
                         {myPostedAssignments.length === 0 ? (
                             <div className="text-center text-lg text-gray-500 mt-10 min-h-[calc(100vh-350px)] flex flex-col justify-center items-center">
                                 <p>You haven't posted any assignments yet.</p>
-                                <p className="mt-2">Go to the <Link to="/create-assignment" className="text-info hover:underline">Create Assignment page</Link> to post one!</p>
+                                <p className="mt-2">Go to the <Link to="/createAssignments" className="text-info hover:underline">Create Assignment page</Link> to post one!</p>
                             </div>
                         ) : (
                             <>
@@ -428,3 +428,6 @@ const MySubmission = () => {
 };
 
 export default MySubmission;
+
+
+

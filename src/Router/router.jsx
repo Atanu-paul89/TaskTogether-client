@@ -13,6 +13,10 @@ import MainLayout from "../Pages/MainLayout";
 import PrivateRoute from "./PrivateRoute";
 import TakeAssignment from "../Pages/TakeAssignment";
 import UpdateAssignment from "../Pages/UpdateAssignment";
+import About from "../Share Components/About";
+import Contact from "../Share Components/Contact";
+import Jobs from "../Share Components/Jobs";
+import Press from "../Share Components/Press";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +30,22 @@ const router = createBrowserRouter([
       {
         path: 'assignments',
         element: <Assignments />,
+      },
+      {
+        path: 'about',
+        element: <About />,
+      },
+      {
+        path: 'contact',
+        element: <Contact />,
+      },
+      {
+        path: 'jobs',
+        element: <Jobs />,
+      },
+      {
+        path: 'press',
+        element: <Press />,
       },
       {
         path: 'assignment/:id',
