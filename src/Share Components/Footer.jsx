@@ -1,4 +1,3 @@
-// Share Components/Footer.jsx
 import React from 'react';
 import { NavLink } from 'react-router';
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
@@ -15,7 +14,7 @@ const Footer = () => {
                 <p className="text-xs text-neutral-content mt-2">Copyright © {new Date().getFullYear()} - All rights reserved</p>
             </aside>
 
-            {/* Each nav section will be a grid item */}
+            
             <div className="flex flex-col items-center md:items-start text-center md:text-left ml-18 lg:ml-0">
                 <h6 className="footer-title text-primary">Services</h6>
                 <a className="link link-hover text-base-content hover:text-primary transition-colors duration-200">Assignment Creation</a>
@@ -32,7 +31,7 @@ const Footer = () => {
                 <NavLink to="/press" className="link link-hover text-base-content hover:text-primary transition-colors duration-200">Press Kit</NavLink>
             </div>
 
-            {/* Combined Legal and Social Media into one nav for better tablet layout */}
+  
             <div className="flex flex-col items-center md:items-start text-center md:text-left ml-18 lg:ml-0">
                 <h6 className="footer-title text-primary">Connect with Us</h6>
                 <div className="flex gap-4 mt-2">
@@ -49,8 +48,7 @@ const Footer = () => {
                         <FaYoutube />
                     </a>
                 </div>
-                {/* Moved Legal here to make 4 distinct grid items on large screens,
-                    and better 2-column split on medium screens. */}
+
                 <h6 className="footer-title text-primary mt-6">Legal</h6>
                 <a className="link link-hover text-base-content hover:text-primary transition-colors duration-200">Terms of service</a>
                 <a className="link link-hover text-base-content hover:text-primary transition-colors duration-200">Privacy policy</a>

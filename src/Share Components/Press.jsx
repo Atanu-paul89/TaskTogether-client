@@ -10,7 +10,7 @@ const Press = () => {
             title: 'Press Releases Archive',
             description: 'Access our past official announcements and news releases.',
             icon: <FaNewspaper className="text-3xl text-accent" />,
-            link: '#', // Replace with actual link to archive
+            link: '#', 
             buttonText: 'View Archive',
         },
         {
@@ -18,7 +18,7 @@ const Press = () => {
             title: 'Media Kit Download',
             description: 'Download our comprehensive media kit, including logos, brand guidelines, and high-resolution images.',
             icon: <FaDownload className="text-3xl text-accent" />,
-            link: '#', // Replace with actual link to media kit zip file
+            link: '#', 
             buttonText: 'Download Kit',
         },
         {
@@ -26,7 +26,7 @@ const Press = () => {
             title: 'Interview Requests',
             description: 'For interview opportunities with our team, please contact our PR department.',
             icon: <FaMicrophoneAlt className="text-3xl text-accent" />,
-            link: 'mailto:press@tasktogether.com?subject=Interview Request', // Replace with actual press email
+            link: 'mailto:press@tasktogether.com?subject=Interview Request', 
             buttonText: 'Request Interview',
         },
     ];
@@ -61,7 +61,7 @@ const Press = () => {
                         </div>
                         <h2 className="text-2xl font-bold text-secondary mb-2">{item.title}</h2>
                         <p className="text-base text-base-content leading-relaxed mb-6">{item.description}</p>
-                        <div className="mt-auto w-full"> {/* Pushes button to bottom */}
+                        <div className="mt-auto w-full"> 
                             <a href={item.link} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-primary w-full">
                                 {item.buttonText}
                             </a>

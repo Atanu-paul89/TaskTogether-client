@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 console.log(motion);
 const UpdateAssignment = () => {
-    const { id } = useParams(); // Get assignment ID from URL
+    const { id } = useParams(); 
     const navigate = useNavigate();
     const { user, loading: authLoading } = useContext(AuthContext);
 
@@ -14,18 +14,18 @@ const UpdateAssignment = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Form state (initialize with empty or default values)
+
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [marks, setMarks] = useState('');
     const [thumbnail, setThumbnail] = useState('');
     const [difficulty, setDifficulty] = useState('easy');
-    const [dueDate, setDueDate] = useState(''); // Store as YYYY-MM-DD for input type="date"
+    const [dueDate, setDueDate] = useState(''); 
 
     useEffect(() => {
         const fetchAssignmentData = async () => {
             if (!user && !authLoading) {
-                // If user is not logged in after auth context loads, redirect
+
                 Swal.fire({
                     title: 'Not Logged In',
                     text: 'You must be logged in to update assignments.',
@@ -43,19 +43,23 @@ const UpdateAssignment = () => {
                 return;
             }
 
-            if (!id || authLoading) return; // Wait for ID and auth loading to complete
+            if (!id || authLoading) return; 
 
             setLoading(true);
             setError(null);
             try {
-                const response = await fetch(`http://localhost:5000/assignments/${id}`);
+                // const response = await fetch(`http://localhost:5000/assignments/${id}`);
+
+                const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${id}`);
+
+
                 if (!response.ok) {
                     const errorData = await response.json();
                     throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
 
-                // Check if the current user is the creator
+
                 if (user && user.email !== data.creatorEmail) {
                     Swal.fire({
                         title: 'Permission Denied',
@@ -63,33 +67,31 @@ const UpdateAssignment = () => {
                         icon: 'error',
                         confirmButtonText: 'OK',
                     }).then(() => {
-                        navigate('/assignments'); // Redirect if not creator
+                        navigate('/assignments'); 
                     });
-                    return; // Stop further execution
+                    return; 
                 }
 
                 setAssignment(data);
-                // Pre-fill form fields with fetched data
                 setTitle(data.title);
                 setDescription(data.description);
                 setMarks(data.marks);
                 setThumbnail(data.thumbnail);
                 setDifficulty(data.difficulty);
-                // Format dueDate for input type="date"
                 setDueDate(new Date(data.dueDate).toISOString().split('T')[0]);
 
             } catch (err) {
                 console.error('Error fetching assignment for update:', err);
                 setError(`Failed to load assignment for editing: ${err.message}`);
                 toast.error(`Error: ${err.message}`);
-                navigate('/assignments'); // Redirect on error
+                navigate('/assignments'); 
             } finally {
                 setLoading(false);
             }
         };
 
         fetchAssignmentData();
-    }, [id, user, authLoading, navigate]); // Re-run if ID, user, or authLoading changes
+    }, [id, user, authLoading, navigate]); 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -101,22 +103,28 @@ const UpdateAssignment = () => {
         const updatedAssignmentData = {
             title,
             description,
-            marks: Number(marks), // Ensure marks is a number
+            marks: Number(marks), 
             thumbnail,
             difficulty,
-            dueDate: new Date(dueDate), // Convert to Date object
-            creatorEmail: user.email, // Send creator email for backend verification
-            creatorName: user.displayName || 'Unknown', // Send creator name (optional, if you want to update it, though typically static)
+            dueDate: new Date(dueDate), 
+            creatorEmail: user.email, 
+            creatorName: user.displayName || 'Unknown', 
         };
 
         setLoading(true); // Set loading while submitting
         try {
-            const response = await fetch(`http://localhost:5000/assignments/${id}`, {
-                method: 'PUT', // Or 'PATCH' if you prefer partial updates
+            // const response = await fetch(`http://localhost:5000/assignments/${id}`, {
+            //     method: 'PUT', 
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(updatedAssignmentData),
+            // });
+
+            const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${id}`, {
+                method: 'PUT', 
                 headers: {
                     'Content-Type': 'application/json',
-                    // Add authorization header if you implement JWT tokens
-                    // 'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(updatedAssignmentData),
             });
@@ -129,7 +137,7 @@ const UpdateAssignment = () => {
             const result = await response.json();
             console.log('Assignment updated successfully:', result);
             toast.success('Assignment updated successfully!');
-            navigate(`/assignment/${id}`); // Redirect to assignment details page
+            navigate(`/assignment/${id}`); 
 
         } catch (err) {
             console.error('Failed to update assignment:', err);

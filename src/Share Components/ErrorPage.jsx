@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router';
 import Lottie from 'lottie-react';
 
-import errorAnimation from '../Lottie-files/errorpage.json'; // Adjust path if your file name is different
+import errorAnimation from '../Lottie-files/errorpage.json'; 
 
 const ErrorPage = () => {
     return (
@@ -12,7 +12,7 @@ const ErrorPage = () => {
                     animationData={errorAnimation}
                     loop={true}
                     autoplay={true}
-                    className="w-full h-auto" // Use Tailwind for responsive width and auto height
+                    className="w-full h-auto" 
                 />
             </div>
             <div>

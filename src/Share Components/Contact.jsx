@@ -1,4 +1,3 @@
-// src/components/ShareComponents/Contact.jsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaEnvelope, FaPhone } from 'react-icons/fa';
@@ -20,14 +19,13 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        // In a real application, you would send this data to a backend endpoint
-        // For now, we'll just simulate a successful submission.
+
         try {
-            // Simulate API call
+
             await new Promise(resolve => setTimeout(resolve, 1500));
             console.log('Contact form submitted:', formData);
             toast.success('Your message has been sent successfully!');
-            setFormData({ name: '', email: '', message: '' }); // Clear form
+            setFormData({ name: '', email: '', message: '' }); 
         } catch (error) {
             console.error('Error submitting contact form:', error);
             toast.error('Failed to send message. Please try again.');

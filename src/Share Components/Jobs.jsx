@@ -64,7 +64,7 @@ const Jobs = () => {
                             <h2 className="text-2xl font-bold text-secondary mb-2">{job.title}</h2>
                             <p className="text-lg text-base-content-secondary mb-1">{job.location} &bull; {job.type}</p>
                             <p className="text-base text-base-content leading-relaxed mb-4">{job.description}</p>
-                            <div className="mt-auto w-full"> {/* Pushes button to bottom */}
+                            <div className="mt-auto w-full"> 
                                 <h3 className="text-lg font-semibold text-accent mb-2">Requirements:</h3>
                                 <ul className="list-disc list-inside text-sm text-base-content mb-4 text-left mx-auto max-w-xs">
                                     {job.requirements.map((req, i) => (
