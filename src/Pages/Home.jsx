@@ -1,6 +1,5 @@
-// src/Pages/Home.jsx
 import React from 'react';
-import { motion } from 'framer-motion'; // For animations as required
+import { motion } from 'framer-motion'; 
 import { Link } from 'react-router';
 
 const Home = () => {
@@ -9,7 +8,7 @@ const Home = () => {
             {/* Banner Section */}
             <section className="relative w-full mt-3 rounded-2xl h-[500px] bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-center text-white p-4 overflow-hidden">
                 <div className="absolute inset-0">
-                    {/* Placeholder for background image or patterns */}
+                    {/* background image  */}
                     <img
                         src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzIyNzh8MHwxfHNlYXJjaHw0OHx8Z3JvdXAlMjBzdHVkeXxlbnwwfHx8fDE3MDkwMTQ4MjJ8MA&ixlib=rb-4.0.3&q=80&w=1080"
                         alt="Group Study Banner"
