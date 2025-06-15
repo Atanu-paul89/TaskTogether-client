@@ -21,7 +21,12 @@ const MySubmission = () => {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch(`http://localhost:5000/submitted-assignments/my-submitted-assignments?email=${email}`, {
+            // const response = await fetch(`http://localhost:5000/submitted-assignments/my-submitted-assignments?email=${email}`, {
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     }
+            // });
+            const response = await fetch(`https://a11-task-together-server.vercel.app/submitted-assignments/my-submitted-assignments?email=${email}`, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -55,7 +60,12 @@ const MySubmission = () => {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch(`http://localhost:5000/assignments/my-posted-assignments?email=${email}`, {
+            // const response = await fetch(`http://localhost:5000/assignments/my-posted-assignments?email=${email}`, {
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     }
+            // });
+            const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/my-posted-assignments?email=${email}`, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -98,7 +108,6 @@ const MySubmission = () => {
         }
     }, [user?.email, viewMode]);
 
-    // Handlers for update/delete (for My Posted Assignments)
     const handleUpdatePosted = (assignmentId) => {
         navigate(`/update-assignment/${assignmentId}`);
     };
@@ -121,7 +130,14 @@ const MySubmission = () => {
 
         if (confirmDelete.isConfirmed) {
             try {
-                const response = await fetch(`http://localhost:5000/assignments/${assignmentId}?creatorEmail=${user.email}`, {
+                // const response = await fetch(`http://localhost:5000/assignments/${assignmentId}?creatorEmail=${user.email}`, {
+                //     method: 'DELETE',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //     },
+                // });
+
+                const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${assignmentId}?creatorEmail=${user.email}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
@@ -134,7 +150,6 @@ const MySubmission = () => {
                 }
 
                 toast.success('Assignment deleted successfully!');
-                // Update the state to remove the deleted assignment
                 setMyPostedAssignments(prevAssignments => prevAssignments.filter(assign => assign._id !== assignmentId));
             } catch (err) {
                 console.error('Error deleting assignment:', err);
@@ -215,10 +230,7 @@ const MySubmission = () => {
                             </div>
                         ) : (
                             <>
-                                {/* Table for larger devices (sm breakpoint and up) */}
-                                {/* This table will be visible on 'sm' (640px) and wider screens. */}
-                                {/* hidden: Hides the element by default. */}
-                                {/* sm:block: Makes the element a block-level element on 'sm' (640px) and wider screens. */}
+
                                 <div className="overflow-x-auto rounded-lg shadow-xl border border-base-300 dark:border-gray-700 hidden sm:block">
                                     <table className="table w-full text-base-content">
                                         <thead>
@@ -256,10 +268,7 @@ const MySubmission = () => {
                                     </table>
                                 </div>
 
-                                {/* Card-like display for smaller devices (below sm breakpoint) */}
-                                {/* This div will be hidden on 'sm' (640px) and wider screens. */}
-                                {/* sm:hidden: Hides the element on 'sm' (640px) and wider screens. */}
-                                {/* grid grid-cols-1 gap-4: Ensures a single column grid layout with spacing for cards on small screens. */}
+
                                 <div className="grid grid-cols-1 gap-4 sm:hidden">
                                     {mySubmittedAssignments.map((submission) => (
                                         <motion.div
@@ -312,10 +321,7 @@ const MySubmission = () => {
                             </div>
                         ) : (
                             <>
-                                {/* Table for larger devices (sm breakpoint and up) for Posted Assignments */}
-                                {/* This table will be visible on 'sm' (640px) and wider screens. */}
-                                {/* hidden: Hides the element by default. */}
-                                {/* sm:block: Makes the element a block-level element on 'sm' (640px) and wider screens. */}
+
                                 <div className="overflow-x-auto rounded-lg shadow-xl border border-base-300 dark:border-gray-700 hidden sm:block">
                                     <table className="table w-full text-base-content">
                                         <thead>
@@ -368,10 +374,6 @@ const MySubmission = () => {
                                     </table>
                                 </div>
 
-                                {/* Card-like display for smaller devices (below sm breakpoint) for Posted Assignments */}
-                                {/* This div will be hidden on 'sm' (640px) and wider screens. */}
-                                {/* sm:hidden: Hides the element on 'sm' (640px) and wider screens. */}
-                                {/* grid grid-cols-1 gap-4: Ensures a single column grid layout with spacing for cards on small screens. */}
                                 <div className="grid grid-cols-1 gap-4 sm:hidden">
                                     {myPostedAssignments.map((assignment) => (
                                         <motion.div
@@ -400,17 +402,17 @@ const MySubmission = () => {
                                             <div className="mb-2">
                                                 <span className="font-semibold">Due Date:</span> {new Date(assignment.dueDate).toLocaleDateString()}
                                             </div>
-                                            {/* Buttons for actions, adjusted for better mobile layout */}
+
                                             <div className="flex flex-col sm:flex-row justify-between gap-2 mt-4">
                                                 <button
                                                     onClick={() => handleUpdatePosted(assignment._id)}
-                                                    className="btn btn-sm btn-info text-white w-full" // w-full for full width on small screens
+                                                    className="btn btn-sm btn-info text-white w-full" 
                                                 >
                                                     Update
                                                 </button>
                                                 <button
                                                     onClick={() => handleDeletePosted(assignment._id)}
-                                                    className="btn btn-sm btn-error text-white w-full" // w-full for full width on small screens
+                                                    className="btn btn-sm btn-error text-white w-full" 
                                                 >
                                                     Delete
                                                 </button>
@@ -428,6 +430,3 @@ const MySubmission = () => {
 };
 
 export default MySubmission;
-
-
-
