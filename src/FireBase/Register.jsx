@@ -1,4 +1,3 @@
-// Pages/Register.jsx
 import React, { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router'; 
 import { AuthContext } from '../FireBase/AuthContext';
@@ -43,7 +42,6 @@ const Register = () => {
         const confirmPassword = form.get('confirmPassword');
         const phoneNumber = form.get('phoneNumber');
 
-        // --- Client-side validation ---
         if (!name || !photoURL || !email || !phoneNumber || !password || !confirmPassword) {
             setRegisterError('All fields are required. Please fill them out.');
             return;
@@ -59,7 +57,7 @@ const Register = () => {
             setPasswordError('Password must be at least 6 characters long, contain at least one uppercase letter, and one lowercase letter.');
             return;
         }
-        // --- End client-side validation ---
+ 
 
         try {
 
