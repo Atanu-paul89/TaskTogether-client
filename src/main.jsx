@@ -6,6 +6,7 @@ import router from './Router/router.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthProvider from './FireBase/AuthProvider.jsx';
+import Authprovider2 from './FireBase/Authprovider2.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -22,7 +23,7 @@ createRoot(document.getElementById('root')).render(
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="colored" // Or "light", "dark", "colored" depending on your theme
+        theme="colored" 
       />
     </AuthProvider>
   </StrictMode>
