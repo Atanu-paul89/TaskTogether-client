@@ -23,7 +23,7 @@ const Pending = () => {
 
         try {
 
-            const response = await fetch(`https://a11-task-together-server.vercel.app/submitted-assignments/pending-assignments?graderEmail=${user.email}`, {
+            const response = await fetch(`https://tasktogether-server.vercel.app/submitted-assignments/pending-assignments?graderEmail=${user.email}`, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -91,7 +91,7 @@ const Pending = () => {
 
         try {
 
-            const response = await fetch(`https://a11-task-together-server.vercel.app/submitted-assignments/${selectedSubmission._id}/grade`, {
+            const response = await fetch(`https://tasktogether-server.vercel.app/submitted-assignments/${selectedSubmission._id}/grade`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

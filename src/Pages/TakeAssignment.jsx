@@ -18,7 +18,7 @@ const TakeAssignment = () => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const backendUrl = "https://a11-task-together-server.vercel.app"; 
+    const backendUrl = "https://tasktogether-server.vercel.app"; 
 
     useEffect(() => {
         const fetchAssignmentDetails = async () => {

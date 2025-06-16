@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, createContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
     const getAndStoreBackendToken = async (currentUser) => {
         if (currentUser) {
             try {
-                const res = await fetch('https://a11-task-together-server.vercel.app/auth/login', {
+                const res = await fetch('https://tasktogether-server.vercel.app/auth/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

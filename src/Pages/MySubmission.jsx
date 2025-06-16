@@ -22,7 +22,7 @@ const MySubmission = () => {
         setError(null);
         try {
 
-            const response = await fetch(`https://a11-task-together-server.vercel.app/submitted-assignments/my-submitted-assignments?email=${email}`, {
+            const response = await fetch(`https://tasktogether-server.vercel.app/submitted-assignments/my-submitted-assignments?email=${email}`, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -57,7 +57,7 @@ const MySubmission = () => {
         setError(null);
         try {
 
-            const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/my-posted-assignments?email=${email}`, {
+            const response = await fetch(`https://tasktogether-server.vercel.app/assignments/my-posted-assignments?email=${email}`, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -123,7 +123,7 @@ const MySubmission = () => {
         if (confirmDelete.isConfirmed) {
             try {
 
-                const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${assignmentId}?creatorEmail=${user.email}`, {
+                const response = await fetch(`https://tasktogether-server.vercel.app/assignments/${assignmentId}?creatorEmail=${user.email}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

@@ -49,7 +49,7 @@ const UpdateAssignment = () => {
             setError(null);
             try {
 
-                const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${id}`);
+                const response = await fetch(`https://tasktogether-server.vercel.app/assignments/${id}`);
 
 
                 if (!response.ok) {
@@ -113,7 +113,7 @@ const UpdateAssignment = () => {
         setLoading(true); 
         try {
 
-            const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${id}`, {
+            const response = await fetch(`https://tasktogether-server.vercel.app/assignments/${id}`, {
                 method: 'PUT', 
                 headers: {
                     'Content-Type': 'application/json',

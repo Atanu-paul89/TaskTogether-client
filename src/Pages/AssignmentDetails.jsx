@@ -20,7 +20,7 @@ const AssignmentDetails = () => {
             setError(null);
             try {
 
-                const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${id}`);
+                const response = await fetch(`https://tasktogether-server.vercel.app/assignments/${id}`);
 
                 if (!response.ok) {
                     let errorData = await response.json();
@@ -65,7 +65,7 @@ const AssignmentDetails = () => {
                 try {
                    
 
-                    const response = await fetch(`https://a11-task-together-server.vercel.app/assignments/${assignment._id}?creatorEmail=${user.email}`, {
+                    const response = await fetch(`https://tasktogether-server.vercel.app/assignments/${assignment._id}?creatorEmail=${user.email}`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',
