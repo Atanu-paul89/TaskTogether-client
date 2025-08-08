@@ -22,14 +22,14 @@ TaskTogether is a collaborative assignment management platform designed to strea
 
 **3.User Profile:**
 - Update Profile (Authenticated): Users can update their display name and profile picture.
-- 
+  
 **4.Theming:**
 - Dark/Light Mode Toggle: Switch between light and dark themes for improved user experience.
-- 
+  
 **5.Responsive Design:**
 - Dynamic Navbar: Adapts to different screen sizes with a responsive hamburger menu for mobile and a full menu for desktop.
 - "More" Dropdown: A dedicated dropdown in the navbar (for both desktop and mobile) for additional links like "About Us," "Contact," "Jobs," and "Press Kit," accessible to all users.
-- 
+  
 **6.Interactive UI:**
 - React Toastify: Provides clear and non-intrusive feedback messages for user actions (success, error, info).
 - Framer Motion: Subtle animations for UI elements for a smoother experience.
@@ -45,9 +45,9 @@ TaskTogether is a collaborative assignment management platform designed to strea
 - Framer Motion for animations
 - React Toastify for notifications
 - SweetAlert2 for beautiful, customizable alerts
-- 
+  
 **Backend (Authentication):**
 - Firebase Authentication (for email/password, Google Sign-In, password reset)
-- 
+  
 **Other:**
 - Context API for state management (AuthContext)
