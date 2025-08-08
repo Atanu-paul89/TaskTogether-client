@@ -4,6 +4,7 @@ TaskTogether
 LiveLink: https://a11-tasktogether.web.app/
 
 **Project Description**
+
 TaskTogether is a collaborative assignment management platform designed to streamline the process of creating, distributing, and submitting assignments. It provides robust user authentication, a clean user interface, and essential features for both assignment creators and participants.
 
 **Features**
