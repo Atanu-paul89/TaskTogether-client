@@ -144,7 +144,7 @@ const Navbar = () => {
                             <li><NavLink to="/pendingAssignments" className={navLinkClasses}>Pending</NavLink></li>
                         </>
                     )}
-                    {/* "More" dropdown for desktop:Kola Kola */}
+                    {/* "More" dropdown for desktop */}
                     <li>
                         <details>
                             <summary className={navLinkClasses}>More</summary>
