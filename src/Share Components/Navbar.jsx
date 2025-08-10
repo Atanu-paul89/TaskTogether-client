@@ -144,7 +144,7 @@ const Navbar = () => {
                             <li><NavLink to="/pendingAssignments" className={navLinkClasses}>Pending</NavLink></li>
                         </>
                     )}
-                    {/* "More" dropdown for desktop */}
+                    {/* "More" dropdown for desktop:Kola Kola */}
                     <li>
                         <details>
                             <summary className={navLinkClasses}>More</summary>
@@ -154,7 +154,7 @@ const Navbar = () => {
                                 <li><NavLink to="/jobs" className={navLinkClasses}>Jobs</NavLink></li>
                                 <li><NavLink to="/press" className={navLinkClasses}>Press Kit</NavLink></li>
                             </ul>
-                        </details>
+                        </details> 
                     </li>
                 </ul>
             </div>
