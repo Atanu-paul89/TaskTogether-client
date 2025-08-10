@@ -145,7 +145,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* How It Works Section kola*/}
+            {/* How It Works Section*/}
             <section className="py-16 bg-base-200">
                 <div className="container mx-auto px-4 text-center">
                     <motion.h2
