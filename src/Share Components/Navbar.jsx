@@ -73,7 +73,8 @@ const Navbar = () => {
 
     return (
 
-        <div className="navbar bg-base-100 shadow-md w-full relative z-50">
+        // <div className=" navbar bg-base-100 shadow-md w-full relative z-50">
+        <div className=" navbar bg-base-100 shadow-md w-full sticky top-0 z-50">
             {/* Navbar Start */}
             <div className="navbar-start">
                 <div className="dropdown">
@@ -147,7 +148,7 @@ const Navbar = () => {
                     <li>
                         <details>
                             <summary className={navLinkClasses}>More</summary>
-                            <ul className="p-2 bg-base-100 rounded-t-none">
+                            <ul className="p-2 md:w-[117px] bg-base-100 rounded-t-none" >
                                 <li><NavLink to="/about" className={navLinkClasses}>About Us</NavLink></li>
                                 <li><NavLink to="/contact" className={navLinkClasses}>Contact</NavLink></li>
                                 <li><NavLink to="/jobs" className={navLinkClasses}>Jobs</NavLink></li>

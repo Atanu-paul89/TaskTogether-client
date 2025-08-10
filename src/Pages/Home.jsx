@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion'; 
+import { motion } from 'framer-motion';
 import { Link } from 'react-router';
 
 const Home = () => {
@@ -28,11 +28,11 @@ const Home = () => {
                         Providing reliable group study solutions since 2024. Unite, Learn, Succeed.
                     </p>
                     <Link to={'/assignments'}>
-                       <button className="btn btn-neutral btn-lg text-primary-content hover:scale-105 transition-transform">
-                        Explore Assignments
-                    </button>
+                        <button className="btn btn-neutral btn-lg text-primary-content hover:scale-105 transition-transform">
+                            Explore Assignments
+                        </button>
                     </Link>
-                 
+
                 </motion.div>
             </section>
 
@@ -60,7 +60,7 @@ const Home = () => {
                             <div className="text-primary text-5xl mb-4">📚</div>
                             <h3 className="text-xl font-semibold text-base-content mb-2">Create & Share Assignments</h3>
                             <p className="text-base-content opacity-80">
-                                Easily create assignments with specific details, marks, and due dates, and share them with your study group. 
+                                Easily create assignments with specific details, marks, and due dates, and share them with your study group.
                             </p>
                         </motion.div>
                         {/* Feature Card 2 */}
@@ -74,7 +74,7 @@ const Home = () => {
                             <div className="text-primary text-5xl mb-4">✍️</div>
                             <h3 className="text-xl font-semibold text-base-content mb-2">Effortless Submission</h3>
                             <p className="text-base-content opacity-80">
-                                Submit your completed assignments with a Google Docs link and quick notes through an intuitive form. 
+                                Submit your completed assignments with a Google Docs link and quick notes through an intuitive form.
                             </p>
                         </motion.div>
                         {/* Feature Card 3 */}
@@ -88,7 +88,7 @@ const Home = () => {
                             <div className="text-primary text-5xl mb-4">✅</div>
                             <h3 className="text-xl font-semibold text-base-content mb-2">Peer Grading & Feedback</h3>
                             <p className="text-base-content opacity-80">
-                                Grade assignments submitted by your friends and provide constructive feedback to help them improve. 
+                                Grade assignments submitted by your friends and provide constructive feedback to help them improve.
                             </p>
                         </motion.div>
                     </div>
@@ -115,7 +115,7 @@ const Home = () => {
                             </div>
                             <div className="collapse-content text-base-content opacity-80">
                                 <p>
-                                    Any logged-in user can navigate to the "Create Assignment" page from the navbar, fill out the assignment details (title, description, marks, thumbnail, difficulty, due date), and submit it. 
+                                    Any logged-in user can navigate to the "Create Assignment" page from the navbar, fill out the assignment details (title, description, marks, thumbnail, difficulty, due date), and submit it.
                                 </p>
                             </div>
                         </div>
@@ -126,7 +126,7 @@ const Home = () => {
                             </div>
                             <div className="collapse-content text-base-content opacity-80">
                                 <p>
-                                    By default, any user can update any assignment. However, deletion is restricted: only the user who created an assignment can delete it. 
+                                    By default, any user can update any assignment. However, deletion is restricted: only the user who created an assignment can delete it.
                                 </p>
                             </div>
                         </div>
@@ -137,13 +137,86 @@ const Home = () => {
                             </div>
                             <div className="collapse-content text-base-content opacity-80">
                                 <p>
-                                    On the "Assignments" page, click "View Assignment" for any assignment. On the details page, click "Take Assignment" to open a submission form where you can provide a Google Docs link and a quick note. 
+                                    On the "Assignments" page, click "View Assignment" for any assignment. On the details page, click "Take Assignment" to open a submission form where you can provide a Google Docs link and a quick note.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            {/* How It Works Section */}
+            <section className="py-16 bg-base-200">
+                <div className="container mx-auto px-4 text-center">
+                    <motion.h2
+                        initial={{ opacity: 0, y: -30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-4xl font-bold text-primary mb-12"
+                    >
+                        How It Works
+                    </motion.h2>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        {[
+                            { icon: '📝', title: 'Post a Task', desc: 'Add title, description, deadline, and share with your group.' },
+                            { icon: '🔍', title: 'Browse Tasks', desc: 'Explore assignments across technical fields.' },
+                            { icon: '📤', title: 'Submit Work', desc: 'Upload your solution via Google Docs link and notes.' },
+                            { icon: '💬', title: 'Peer Feedback', desc: 'Receive grades and suggestions from your peers.' }
+                        ].map((step, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true, amount: 0.5 }}
+                                transition={{ duration: 0.5, delay: index * 0.2 }}
+                                className="card bg-base-100 shadow-lg p-6 rounded-lg"
+                            >
+                                <div className="text-primary text-5xl mb-4">{step.icon}</div>
+                                <h3 className="text-xl font-semibold text-base-content mb-2">{step.title}</h3>
+                                <p className="text-base-content opacity-80">{step.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Top Contributors Section */}
+            <section className="py-16 bg-base-100">
+                <div className="container mx-auto px-4 text-center">
+                    <motion.h2
+                        initial={{ opacity: 0, y: -30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-4xl font-bold text-primary mb-12"
+                    >
+                        Top Contributors
+                    </motion.h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {[
+                            { name: 'Ayesha Rahman', tasks: 12, img: 'https://i.pravatar.cc/150?img=32' },
+                            { name: 'Raisa Chowdhury', tasks: 9, img: 'https://i.pravatar.cc/150?img=45' },
+                            { name: 'Tanvir Hasan', tasks: 8, img: 'https://i.pravatar.cc/150?img=12' }
+                        ].map((user, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true, amount: 0.5 }}
+                                transition={{ duration: 0.5, delay: index * 0.2 }}
+                                className="bg-base-200 p-6 rounded-xl shadow-md flex flex-col items-center"
+                            >
+                                <img src={user.img} alt={user.name} className="w-20 h-20 rounded-full mb-4" />
+                                <h4 className="text-lg font-semibold text-base-content">{user.name}</h4>
+                                <p className="text-base-content opacity-80">{user.tasks} tasks completed</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+
         </div>
     );
 };
