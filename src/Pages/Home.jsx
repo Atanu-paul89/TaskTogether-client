@@ -181,7 +181,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Top Contributors Section */}
+            {/* Top Contributors Section Kola */}
             <section className="py-16 bg-base-100">
                 <div className="container mx-auto px-4 text-center">
                     <motion.h2
